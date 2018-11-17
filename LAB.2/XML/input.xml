@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<guns xmlns="LAB.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="LAB.2 ../XSD/input.xsd">
+    <gun id="3">
+        <model>Model 1 Pistol</model>
+        <handy num="1" />
+        <origin>Country 1</origin>
+        <TTC>
+            <range type="near" />
+            <sightingRange>30</sightingRange>
+            <attachments>
+                <clip />
+            </attachments>
+        </TTC>
+        <materials>
+            <material>Steel</material>
+            <material>Wood</material>
+        </materials>
+    </gun>
+
+    <gun id="2">
+        <model>Model 2 SMG</model>
+        <handy num="2"/>
+        <origin>Country 1</origin>
+        <TTC>
+            <range type="near"/>
+            <sightingRange>150</sightingRange>
+            <attachments>
+
+            </attachments>
+        </TTC>
+        <materials>
+            <material>Steel</material>
+        </materials>
+    </gun>
+
+    <gun id="4">
+        <model>Model 3 Automatic Rifle</model>
+        <handy num="2"/>
+        <origin>Country 1</origin>
+        <TTC>
+            <range type="medium"/>
+            <sightingRange>450</sightingRange>
+            <attachments>
+
+            </attachments>
+        </TTC>
+        <materials>
+            <material>Steel</material>
+            <material>Wood</material>
+        </materials>
+    </gun>
+
+    <gun id="1">
+        <model>Model 4 Rifle</model>
+        <handy num="2"/>
+        <origin>Country 1</origin>
+        <TTC>
+            <range type="far"/>
+            <sightingRange>800</sightingRange>
+            <attachments>
+                <clip />
+                <optics />
+            </attachments>
+        </TTC>
+        <materials>
+            <material>Wood</material>
+            <material>Steel</material>
+        </materials>
+    </gun>
+</guns>
