@@ -1,0 +1,10 @@
+Material My Material : Common/MatDefs/Light/Lighting.j3md {
+     MaterialParameters {
+        GlowColor : 0 0 0 0
+        DiffuseMap : Textures/Sun.texture.png
+        UseMaterialColors : false
+        GlowMap : Textures/Sun.texture.png
+     }
+    AdditionalRenderState {
+    }
+}
