@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LAB.3</string>
+    <string name="acclrmtr">Accelerometer</string>
+    <string name="grscp">Gyroscope</string>
+    <string name="noSupport">not supported.</string>
+    <string name="dist">Distance: </string>
+</resources>
