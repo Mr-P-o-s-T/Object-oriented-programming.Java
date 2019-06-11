@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="scripts/clients.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/horses.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/races.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/race_cast.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/bets.sql" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>
