@@ -1,6 +1,0 @@
-create table races
-(
-    id INTEGER UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
-    racecourse VARCHAR(101) NOT NULL,
-    date DATE NOT NULL
-);

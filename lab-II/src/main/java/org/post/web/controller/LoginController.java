@@ -18,6 +18,11 @@ import java.io.IOException;
 public class LoginController {
 	private static String login = "admin", pass = "admin";
 
+	@GetMapping("/")
+	public String all() {
+		return "login";
+	}
+
 	@GetMapping("/login")
 	public String login() {
 		return "login";
@@ -26,12 +31,11 @@ public class LoginController {
 	@PostMapping("/login")
 	public String checkLogin(@RequestParam() String name, @RequestParam() String password,
 							 HttpServletResponse response) {
-
-//		if (name.equals(login) && password.equals(pass)) {
-		response.addCookie(new Cookie("username", name));
-		return "index";
-		/*}
-		else throw new ValidationException("Administrator authentication failed!");*/
+		if (name.equals(login) && password.equals(pass)) {
+			response.addCookie(new Cookie("username", name));
+			return "index";
+		}
+		else throw new ValidationException("Administrator authentication failed!");
 	}
 
 	@ExceptionHandler(ValidationException.class)
