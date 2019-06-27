@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -7,9 +6,9 @@
     <title>Welcome</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.css" type="text/css"/>
-    <script src="js/uikit.js"></script>
-    <script src="js/uikit-icons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.css" type="text/css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
 </head>
 <body>
 <section class="uk-section">
@@ -24,17 +23,15 @@
 
         <div class="uk-margin">
             <div class="uk-inline">
-                <label>
-                    <input class="uk-input" type="text" name="name" placeholder="Login...">
-                </label>
+                <%--suppress HtmlFormInputWithoutLabel --%>
+                <input class="uk-input" type="text" name="login" placeholder="Login...">
             </div>
         </div>
 
         <div class="uk-margin">
             <div class="uk-inline">
-                <label>
-                    <input class="uk-input" type="password" name="password" placeholder="Password...">
-                </label>
+                <%--suppress HtmlFormInputWithoutLabel --%>
+                <input class="uk-input" type="password" name="password" placeholder="Password...">
             </div>
         </div>
 

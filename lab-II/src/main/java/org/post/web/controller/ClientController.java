@@ -4,6 +4,7 @@ import org.post.exception.ValidationException;
 import org.post.service.ClientService;
 import org.post.web.controller.validation.Validate;
 import org.post.web.controller.validation.Validator;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ public class ClientController {
   }
 
   @GetMapping("/client")
+  @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
   public ModelAndView findAllClients(HttpServletRequest request, ModelAndView modelAndView) {
     List tmp = service.findAllClients();
     request.setAttribute("clients", tmp);
@@ -32,6 +34,7 @@ public class ClientController {
   }
 
   @PostMapping("/client")
+  @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
   public ModelAndView createClient(HttpServletRequest request, ModelAndView modelAndView,
                                    @RequestParam(name = "firstname") String firstname,
                                    @RequestParam(name = "lastname") String lastname) {

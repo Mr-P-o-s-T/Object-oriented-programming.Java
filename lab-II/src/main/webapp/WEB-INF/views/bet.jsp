@@ -1,15 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Bets</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.css" type="text/css"/>
-    <script src="js/uikit.js"></script>
-    <script src="js/uikit-icons.js"></script>
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
 </head>
 <body>
 <section class="uk-section">
@@ -26,13 +25,13 @@
             <thead>
             <tr>
                 <td>ID</td>
-                <td>Client</td>
-                <td>Racecourse</td>
+                <td>Client Id</td>
+                <td>Race Id</td>
+                <td>Horse Id</td>
                 <td>Bet</td>
                 <td>Bet type</td>
-                <td>First horse nickname</td>
-                <td>Second horse nickname</td>
-                <td>Third horse nickname</td>
+                <td>Second horse Id</td>
+                <td>Third horse Id</td>
             </tr>
             </thead>
             <tbody>
@@ -40,13 +39,13 @@
             <c:forEach var="bet" items="${bets}">
                 <tr>
                     <td>${bet.getId()}</td>
-                    <td>${bet.getClient().getName()}</td>
-                    <td>${bet.getRace().getRacecourse()}</td>
+                    <td>${bet.getClientId()}</td>
+                    <td>${bet.getRaceId()}</td>
+                    <td>${bet.getHorseId()}</td>
                     <td>${bet.getBet()}</td>
                     <td>${bet.getBetType()}</td>
-                    <td>${bet.getFirstHorse().getHorseNickname()}</td>
-                    <td>${bet.getSecondHorse() == null ? "No horse..." : bet.getSecondHorse().getHorseNickname()}</td>
-                    <td>${bet.getThirdHorse() == null ? "No horse..." : bet.getThirdHorse().getHorseNickname()}</td>
+                    <td>${bet.getScndHorseId()}</td>
+                    <td>${bet.getThrdHorseId()}</td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -75,6 +74,14 @@
             </div>
 
             <div class="uk-margin">
+                <label class="uk-form-label" for="horse_id">Horse ID:</label>
+                <div class="uk-form-controls">
+                    <input class="uk-input" id="horse_id" type="text" name="horse_id"
+                           placeholder="Horse ID...">
+                </div>
+            </div>
+
+            <div class="uk-margin">
                 <label class="uk-form-label" for="bet">Bet:</label>
                 <div class="uk-form-controls">
                     <input class="uk-input" id="bet" type="text" name="bet"
@@ -85,21 +92,13 @@
             <div class="uk-margin">
                 <label class="uk-form-label" for="bet_type">Bet type:</label>
                 <div class="uk-form-controls">
-                    <select class="uk-select" id="bet_type" name="bet_type">
+                    <select class="uk-select" id="bet_type" type="text" name="bet_type">
                         <option value="Win">Win</option>
                         <option value="Each-way">Each-way</option>
                         <option value="Forecast">Forecast</option>
                         <option value="Tricast">Tricast</option>
                         <option value="Head-to-head">Head-to-head</option>
                     </select>
-                </div>
-            </div>
-
-            <div class="uk-margin">
-                <label class="uk-form-label" for="horse_id">Horse ID:</label>
-                <div class="uk-form-controls">
-                    <input class="uk-input" id="horse_id" type="text" name="horse_id"
-                           placeholder="First horse ID...">
                 </div>
             </div>
 

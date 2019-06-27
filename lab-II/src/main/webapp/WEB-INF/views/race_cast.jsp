@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -8,8 +7,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.css" type="text/css"/>
-    <script src="js/uikit.js"></script>
-    <script src="js/uikit-icons.js"></script>
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
 </head>
 <body>
 <section class="uk-section">
@@ -25,6 +24,7 @@
         <table class="uk-table uk-table-hover uk-table-divider uk-table-striped">
             <thead>
             <tr>
+                <td>ID</td>
                 <td>Race ID</td>
                 <td>Horse ID</td>
                 <td>Jockey first name</td>
@@ -36,8 +36,9 @@
             <%--@elvariable id="raceCasts" type="java.util.List"--%>
             <c:forEach var="raceCast" items="${raceCasts}">
                 <tr>
-                    <td>${raceCast.getRace().getRacecourse()}</td>
-                    <td>${raceCast.getHorse().getHorseNickname()}</td>
+                    <td>${raceCast.getId()}</td>
+                    <td>${raceCast.getRaceId()}</td>
+                    <td>${raceCast.getHorseId()}</td>
                     <td>${raceCast.getJockeyFirstname()}</td>
                     <td>${raceCast.getJockeyLastname()}</td>
                     <td>${raceCast.getCoefficient()}</td>
@@ -50,7 +51,7 @@
 
 <section class="uk-section">
     <div class="uk-container">
-        <form action="<c:url value="/race_cast"/>" class="uk-form-horizontal" method="POST">
+        <form action="<c:url value="/raceCast"/>" class="uk-form-horizontal" method="POST">
 
             <div class="uk-margin">
                 <label class="uk-form-label" for="race_id">Race ID:</label>

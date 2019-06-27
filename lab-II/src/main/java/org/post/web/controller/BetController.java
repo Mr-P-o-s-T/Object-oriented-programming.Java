@@ -5,6 +5,7 @@ import org.post.exception.ValidationException;
 import org.post.service.BetService;
 import org.post.web.controller.validation.Validate;
 import org.post.web.controller.validation.Validator;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ public class BetController {
   }
 
   @GetMapping("/bet")
+  @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
   public ModelAndView findAllBets(HttpServletRequest request, ModelAndView modelAndView) {
     List<Bet> tmp= service.findAllBets();
     request.setAttribute("bets", tmp);
@@ -33,6 +35,7 @@ public class BetController {
   }
 
   @PostMapping("/bet")
+  @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
   public ModelAndView createBet(HttpServletRequest request, ModelAndView modelAndView,
                                    @RequestParam(name = "client_id") String clientId,
                                    @RequestParam(name = "race_id") String raceId,

@@ -1,0 +1,80 @@
+<!--
+The project creates Docker containers.
+It uses three microservices:
+1. Order to create orders. This service sends messages to Kafka. It uses the KafkaTemplate.
+2. Shipment receives the orders and extract the information needed to ship the items.
+3. Invoicing receives the messages, too. It extracts all information to send out an invoice. It uses @KafkaListener just
+like Shipment.
+This is done using a topic order. It has five partitions. Shipment and invoicing each have a separate consumer group. So
+multiple instances of shipment and invoicing can be run. Each instance would get specific events.
+
+Technologies:
+1. Spring Boot.
+2. Spring Kafka.
+3. Apache httpd.
+4. Kafka.
+5. Zookeeper.
+6. Postgres.
+7. Docker Compose to link the containers.
+
+There are three Docker containers for the microservices. The other Docker containers are for Apache httpd, Kafka,
+Zookeeper and Postgres. Incoming http requests are handled by the Apache httpd server. It is available at port 8080 of
+the Docker host e.g. http://localhost:8080. HTTP requests are forwarded to the microservices. Kafka is used for the
+communication between the microservices. Kafka needs Zookeeper to coordinate instances. Postgres is used by all
+microservices to store data. Each microservices uses its own database in the Postgres instance so they are decoupled in
+that regard.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.4.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.post</groupId>
+	<artifactId>microservice-kafka</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>microservice-kafka-auth</module>
+		<module>microservice-kafka-business</module>
+	</modules>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>bootstrap</artifactId>
+				<version>3.3.6</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>-XX:TieredStopAtLevel=1 -noverify</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

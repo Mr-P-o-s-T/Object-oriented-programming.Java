@@ -4,6 +4,7 @@ import org.post.exception.ValidationException;
 import org.post.service.HorseService;
 import org.post.web.controller.validation.Validate;
 import org.post.web.controller.validation.Validator;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ public class HorseController {
   }
 
   @GetMapping("/horse")
+  @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
   public ModelAndView findAllHorses(HttpServletRequest request, ModelAndView modelAndView) {
     List tmp = service.findAllHorses();
     request.setAttribute("horses", tmp);
@@ -32,6 +34,7 @@ public class HorseController {
   }
 
   @PostMapping("/horse")
+  @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
   public ModelAndView createHorse(HttpServletRequest request, ModelAndView modelAndView,
                                    @RequestParam(name = "horse_nickname") String nickname) {
     try {

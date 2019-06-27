@@ -53,13 +53,13 @@ task buildWar {
 
 liquibase {
     activities {
-        main {
+        /*main {
             changeLogFile "./src/main/resources/db/changelog.xml"
-            url 'jdbc:mysql://localhost/mydb'
+            url "jdbc:mysql://localhost/mydb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
             driver 'com.mysql.cj.jdbc.Driver'
             username 'root'
             password 'Gahokm'
-        }
+        }*/
     }
 }
 

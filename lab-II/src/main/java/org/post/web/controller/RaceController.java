@@ -4,6 +4,7 @@ import org.post.exception.ValidationException;
 import org.post.service.RaceService;
 import org.post.web.controller.validation.Validate;
 import org.post.web.controller.validation.Validator;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ public class RaceController {
   }
 
   @GetMapping("/race")
+  @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
   public ModelAndView findAllRaces(HttpServletRequest request, ModelAndView modelAndView) {
     List tmp = service.findAllRaces();
     request.setAttribute("races", tmp);
@@ -33,6 +35,7 @@ public class RaceController {
   }
 
   @PostMapping("/race")
+  @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
   public ModelAndView createRace(HttpServletRequest request, ModelAndView modelAndView,
                                    @RequestParam(name = "racecourse") String racecourse,
                                    @RequestParam(name = "date") String date) {
